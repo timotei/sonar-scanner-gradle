@@ -7,6 +7,13 @@ http://docs.sonarqube.org/display/SONAR/Analyzing+with+SonarQube+Scanner+for+Gra
 
 ## Developer documentation
 
+### To run Android tests
+
+* install Android SDK for your platform and configure ANDROID_HOME
+* use Android SDK Manager to install components required by test projects:
+  ** SDK Build Tools 23.0.1
+  ** SDK Platform 23
+
 ### How to install a SNAPSHOT in local Maven repository:
 `./gradlew install`
 

@@ -1,0 +1,73 @@
+/**
+ * SonarQube Gradle Plugin
+ * Copyright (C) 2015-2016 SonarSource
+ * sonarqube@googlegroups.com
+ *
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU Lesser General Public
+ * License as published by the Free Software Foundation; either
+ * version 3 of the License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public
+ * License along with this program; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02
+ */
+buildscript {
+  repositories {
+    mavenCentral()
+    mavenLocal()
+    jcenter()
+  }
+  dependencies {
+    classpath 'com.android.tools.build:gradle:2.2.0'
+  }
+}
+
+plugins {
+  id 'org.sonarqube'
+}
+
+apply plugin: 'jacoco'
+apply plugin: 'com.android.application'
+
+repositories {
+  jcenter()
+}
+
+dependencies {
+  compile 'joda-time:joda-time:2.7'
+  testCompile 'junit:junit:4.12'
+}
+
+android {
+  compileSdkVersion 23
+  buildToolsVersion "23.0.1"
+  buildTypes {
+    release {
+      testCoverageEnabled true
+    }
+  }
+  productFlavors {
+    demo {
+      applicationId "com.example.myapp.demo"
+      versionName "1.0-demo"
+    }
+    full {
+      applicationId "com.example.myapp.full"
+      versionName "1.0-full"
+    }
+  }
+}
+
+sonarqube {
+    properties {
+        property "sonar.projectName", "Simple Android Gradle Project"
+        property "sonar.projectKey", "org.sonarqube:example-android-gradle"
+    }
+}
+
