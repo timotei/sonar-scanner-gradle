@@ -44,7 +44,7 @@ repositories {
     url "https://maven.google.com"
   }
   maven {
-    url "https://repox.sonarsource.com/sonarsource"
+    url "https://repox.jfrog.io/repox/sonarsource"
   }
 }
 
